@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  catalogapi:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: CatalogApi/Dockerfile
+
+  streamservice:
+    image: ${DOCKER_REGISTRY-}streamservice
+    build:
+      context: .
+      dockerfile: StreamService/Dockerfile
+
+
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+    ports:
+      - "5542:80"

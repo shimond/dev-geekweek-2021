@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  catalogapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+  streamservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmqName
+    ports:
+      - "8091:15672"
+      - "9567:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=shimond
+      - RABBITMQ_DEFAULT_PASS=Nxprnzk7
+
+
+  gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+

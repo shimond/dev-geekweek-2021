@@ -1,0 +1,54 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/catalog/v1/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "catalogapi",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "catalogapi-swagger"
+    },
+    {
+      "UpstreamPathTemplate": "/api/stream/v1/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "streamservice",
+          "Port": 80
+        }
+      ],
+      "SwaggerKey": "streamservice-swagger"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "streamservice-swagger",
+      "Config": [
+        {
+          "Name": "streamservice API",
+          "Version": "v1",
+          "Url": "http://streamservice/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "catalogapi-swagger",
+      "Config": [
+        {
+          "Name": "catalog API",
+          "Version": "v1",
+          "Url": "http://catalogapi/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}
